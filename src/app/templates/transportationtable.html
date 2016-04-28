@@ -1,0 +1,16 @@
+<table class="table table-striped">
+	<thead>
+		<tr>
+			<th>Departure</th>
+			<th>Arrival</th>
+			<th>Stops</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr ng-repeat="connection in connections">
+			<td>{{connection.from.departure | date: 'short'}}</td>
+			<td>{{connection.to.arrival | date: 'short'}}</td>
+			<td>{{connection.sections.length - 1}}</td>
+		</tr>
+	</tbody>
+</table>

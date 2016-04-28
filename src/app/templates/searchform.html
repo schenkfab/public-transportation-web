@@ -9,16 +9,17 @@
 			ng-model="searchFields.from" 
 			class="form-control"
 			details="details"
+			autocomplete="off" 
 			required>
 		</input>	
 	</div>
 	<div class="form-group required">
 		<label class="control-label" for="to">To:</label>
-		<input name="to" uib-typeahead="station for station in stations($viewValue)" type="text" placeholder="To" ng-model="searchFields.to" class="form-control" required></input>
+		<input name="to" autocomplete="off" uib-typeahead="station for station in stations($viewValue)" type="text" placeholder="To" ng-model="searchFields.to" class="form-control" required></input>
 	</div>
-	<div class="form-group required">
+	<div class="form-group">
 		<label class="control-label" for="date">Date:</label>
-		<input name="date" type="datetime-local" ng-model="searchFields.date" class="form-control" required></input>
+		<input name="date" type="datetime-local" ng-model="searchFields.date" class="form-control"></input>
 	</div>
 	<button class="btn btn-default" ng-click="search()">Search</button>
 </form>

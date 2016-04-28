@@ -16,8 +16,13 @@ angular.module('myApp').controller('mainCtrl', function($scope, $http) {
 		// Create the date and time parameters
 		// date	Date of the connection, in the format YYYY-MM-DD	2012-03-25
 		// time	Time of the connection, in the format hh:mm			17:30
-		var d = new Date($scope.searchFields.date);
-		var date = d.getUTCFullYear() + '-' + d.getUTCMonth() + '-' + d.getDate();
+		var d = '';
+		if ($scope.searchFields.date == undefined) {
+			d = new Date();
+		} else {
+			d = new Date($scope.searchFields.date);
+		}
+		var date = d.getUTCFullYear() + '-' + (d.getUTCMonth() + 1) + '-' + d.getDate();
 		var time = '';
 		if (d.getMinutes() < 10) {
 			time = d.getHours() + ':0' + d.getMinutes();
@@ -34,6 +39,7 @@ angular.module('myApp').controller('mainCtrl', function($scope, $http) {
 			}
 		}).then(function successCallback(response) {
 			$scope.connections = response.data.connections;
+			console.log($scope.connections);
 		}, function errorCallback(response) {
 			console.log(response);
 		});
