@@ -11,7 +11,7 @@ var gutil = require('gulp-util');
 
 gulp.task('inject:dev', ['css:dev', 'fonts:dev', 'sass:dev', 'js:dev', 'directives:dev'], function () {
 	var target = gulp.src('./src/index.html');
-	var sources = gulp.src(['./.tmp/**/*.js', './.tmp/**/style.css'], {read: false});
+	var sources = gulp.src(['./.tmp/app/*.js', './.tmp/app/controllers/*.js', './.tmp/app/directives/*.js', './.tmp/app/services/*.js', './.tmp/**/style.css'], {read: false});
 	var sourceVendorJs = gulp.src(['./bower_components/jquery/dist/jquery.js', './bower_components/angular/angular.js'
 	, './bower_components/ng-focus-if/focusIf.js', './bower_components/angular-ui/build/angular-ui.js'
 	, './bower_components/angular-bootstrap/ui-bootstrap-tpls.js']);
