@@ -1,3 +1,8 @@
+/*
+	Source: https://github.com/jakearchibald/indexeddb-promised
+	Author: Jake Archibald
+*/
+
 'use strict';
 
 
