@@ -8,6 +8,7 @@ var runSequence = require('run-sequence');
 var concat = require('gulp-concat');
 var uglify = require('gulp-uglify');
 var gutil = require('gulp-util');
+var babel = require('gulp-babel');
 
 gulp.task('inject:dev', ['css:dev', 'fonts:dev', 'sass:dev', 'js:dev', 'directives:dev'], function () {
 	var target = gulp.src('./src/index.html');
@@ -54,6 +55,7 @@ gulp.task('sass:dev', function() {
 
 gulp.task('js:dev', function() {
 	return gulp.src('./src/**/*.js')
+		.pipe(babel({presets: ['es2015']}))
 		.pipe(gulp.dest('./.tmp'));
 });
 
