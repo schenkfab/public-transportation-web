@@ -1,4 +1,4 @@
-var cacheName = 'myAppCache-v2';
+var cacheName = 'publictransportationcache';
 
 self.addEventListener('install', function(event) {
 	var urlsToCache = [
