@@ -24,21 +24,6 @@ angular.module('myApp').controller('mainCtrl', function($scope, $http) {
 
 
 	$scope.search = function () {
-		// Store the last connection in IndexedDb to load it initially.
-		
-		/*dbPromise.then(db =>{
-			var tx = db.transaction('people', 'readwrite');
-			var peopleStore = tx.objectStore('people');
-			var ageIndex = peopleStore.index('age');
-			// Only show the onces that are 25
-			//return ageIndex.getAll(25);
-			// Show index
-			//return ageIndex.getAll();
-			// Show all by key
-			return peopleStore.getAll();
-		}).then(vals => { console.log(vals); })*/
-
-
 		// Create the date and time parameters
 		// date	Date of the connection, in the format YYYY-MM-DD	2012-03-25
 		// time	Time of the connection, in the format hh:mm			17:30
@@ -65,7 +50,7 @@ angular.module('myApp').controller('mainCtrl', function($scope, $http) {
 			}
 		}).then(function successCallback(response) {
 			// Store in IndexedDb
-			var _dbPromise = idb.open('publictransportation', 1, upgradeDb => {
+			idb.open('publictransportation', 1, upgradeDb => {
 				upgradeDb.createObjectStore('connections', {'keyPath': 'id'});
 			}).then(db =>{
 				var tx = db.transaction('connections', 'readwrite');
@@ -76,7 +61,9 @@ angular.module('myApp').controller('mainCtrl', function($scope, $http) {
 					connectionStore.put(con);
 				});
 				return tx.complete;
-			}).then(() => {console.log('done')});
+			}).then(() => {
+				//console.log('done')
+			});
 			$scope.connections = response.data.connections;
 		}, function errorCallback(response) {
 			console.log(response);
