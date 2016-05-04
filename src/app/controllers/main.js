@@ -12,7 +12,6 @@ angular.module('myApp').controller('mainCtrl', function($scope, $http) {
 
 
 	$scope.search = function () {
-		console.log($scope.searchFields);
 		// Create the date and time parameters
 		// date	Date of the connection, in the format YYYY-MM-DD	2012-03-25
 		// time	Time of the connection, in the format hh:mm			17:30
@@ -39,7 +38,7 @@ angular.module('myApp').controller('mainCtrl', function($scope, $http) {
 			}
 		}).then(function successCallback(response) {
 			$scope.connections = response.data.connections;
-			console.log($scope.connections);
+
 		}, function errorCallback(response) {
 			console.log(response);
 		});
