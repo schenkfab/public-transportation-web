@@ -5,6 +5,7 @@ self.addEventListener('install', function(event) {
 		'/',
 		'/bower_components/jquery/dist/jquery.js',
 		'/bower_components/angular/angular.js',
+		'/bower_components/ng-focus-if/focusIf.js',
 		'/bower_components/angular-ui/build/angular-ui.js',
 		'/bower_components/angular-bootstrap/ui-bootstrap-tpls.js',
 		'/app/main.js',
@@ -13,7 +14,15 @@ self.addEventListener('install', function(event) {
 		'/app/directives/_template.js',
 		'/app/directives/searchForm.js',
 		'/app/directives/transportationtable.js',
-		'/app/services/page.js'
+		'/app/services/page.js',
+		'/app/idb.js',
+		'/app/vendors.css',
+		'/css/font-awesome.css',
+		'/css/font-awesome.min.css',
+		'/app/style.css',
+		'/app/templates/searchform.html',
+		'/app/templates/transportationtable.html',
+		'/sw.js'
 	];
 
 	event.waitUntil(

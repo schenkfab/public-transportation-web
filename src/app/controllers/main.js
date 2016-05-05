@@ -1,16 +1,17 @@
 angular.module('myApp').controller('mainCtrl', function($scope, $http) {
 	$scope.searchFields = {};
 
-
 	// Set the last searched connection:
 	var _dbPromise = idb.open('publictransportation', 1, upgradeDb => {
 		upgradeDb.createObjectStore('connections', {'keyPath': 'id'});
 	}).then(db => {
 		return db.transaction('connections').objectStore('connections').getAll();
 	}).then(connections => {
+		console.log(connections);
 		$scope.connections = connections;
 		$scope.searchFields.to = connections[0].to.location.name;
 		$scope.searchFields.from = connections[0].from.location.name;
+		$scope.$apply();
 	});
 
 	$scope.stations = function(cityName) {
