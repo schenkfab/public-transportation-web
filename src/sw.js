@@ -1,7 +1,7 @@
 var cacheName = 'publictransportationcache';
 
 self.addEventListener('install', function(event) {
-	var urlsToCache = [
+	var urlsToCacheDev = [
 		'/',
 		'/bower_components/jquery/dist/jquery.js',
 		'/bower_components/angular/angular.js',
@@ -24,10 +24,26 @@ self.addEventListener('install', function(event) {
 		'/app/templates/transportationtable.html',
 		'/sw.js'
 	];
+	var urlsToCacheProd = [
+		'/',
+		'/css/vendors.css',
+		'/css/font-awesome.css',
+		'/css/font-awesome.min.css',
+		'/css/style.css',
+		'/app/templates/searchform.html',
+		'/app/templates/transportationtable.html',
+		'/js/all.js',
+		'/js/angular-ui.js',
+		'/js/angular.js',
+		'/js/focusIf.js',
+		'/js/jquery.js',
+		'/js/ui-bootstrap-tpls.js',
+		'/sw.js'
+	];
 
 	event.waitUntil(
 		caches.open(cacheName).then(function(cache) {
-			cache.addAll(urlsToCache);
+			cache.addAll(urlsToCacheDev);
 		})
 	);
 });

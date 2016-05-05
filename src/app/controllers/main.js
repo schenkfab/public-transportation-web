@@ -7,11 +7,13 @@ angular.module('myApp').controller('mainCtrl', function($scope, $http) {
 	}).then(db => {
 		return db.transaction('connections').objectStore('connections').getAll();
 	}).then(connections => {
-		console.log(connections);
-		$scope.connections = connections;
-		$scope.searchFields.to = connections[0].to.location.name;
-		$scope.searchFields.from = connections[0].from.location.name;
-		$scope.$apply();
+		if (connections.length > 0)
+		{
+			$scope.connections = connections;
+			$scope.searchFields.to = connections[0].to.location.name;
+			$scope.searchFields.from = connections[0].from.location.name;
+			$scope.$apply();
+		}
 	});
 
 	$scope.stations = function(cityName) {
